@@ -1,13 +1,12 @@
 import './App.css'
-import './Navbar.jsx'
-import Navbar from './Navbar.jsx'
-
+import NavBar from './components/NavBar/Navbar.jsx'
+import ItemListContainer from './components/ItemListContainer/ItemListContainer.jsx'
 function App() {
 
   return (
     <>
-      <Navbar/>
-      <h1>Hello World</h1>
+      <NavBar/>
+      <ItemListContainer greeting={'Bienvenido'}/>
     </>
 
   ) 
