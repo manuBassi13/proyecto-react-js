@@ -1,13 +1,13 @@
 import cart from './assets/cart.svg'
+import styles from './CartWidget.module.css'
 
-const CartWidget = () => {
+export const CartWidget = () => {
     return(
         <div>
-            <img src={cart} alt="cart-widget" className="cart-svg"/>
-            0
+            <img src={cart} alt="cart-widget" className={styles.cart__svg}/>
+            <span> 0 </span>
         </div>
 
     )
 }
 
-export default CartWidget
