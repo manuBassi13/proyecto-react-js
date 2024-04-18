@@ -1,19 +1,19 @@
-import CartWidget from "../CartWidget/CartWidget.jsx"
+import styles from './Navbar.module.css'
+import logo from '../../assets/logo-bsheep.png'
+import { CartWidget } from "../CartWidget/CartWidget.jsx"
 
-const NavBar = () => {
+export const NavBar = () => {
     return (
-        <nav>
-            <h3>BlackSheep</h3>
-            <div>
-                <ul className="nav-list">
+        <header className={styles.header}>
+            <img src={logo} alt="Logo Black Sheep" className={styles.navbar__logo} />
+            <nav>
+                <ul className={styles.navbar__list}>
                     <li>Inicio</li>
                     <li>Productos</li>
                     <li>Contacto</li>
-                    <li><CartWidget/></li>
                 </ul>
-            </div>
-        </nav>
+            </nav>
+            <CartWidget/>
+        </header>
     )
 }
-
-export default NavBar

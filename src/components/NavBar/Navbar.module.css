@@ -1,0 +1,19 @@
+.header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar__logo{
+    width: 100px;
+}
+
+.navbar__list{
+    display: flex;
+    list-style: none;
+}
+
+.background{
+    background-color: #CCC;
+}
