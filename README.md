@@ -1,6 +1,7 @@
-# React + Vite
+# Tienda online de Black Sheep Deco
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+La pagina se basa en un carrito de compras utilizando la librería React
+
 
 Currently, two official plugins are available:
 

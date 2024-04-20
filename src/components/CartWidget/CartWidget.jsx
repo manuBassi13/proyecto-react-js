@@ -1,4 +1,4 @@
-import cart from './assets/cart.svg'
+import cart from './assets/bag-shopping-solid.svg'
 import styles from './CartWidget.module.css'
 
 export const CartWidget = () => {
