@@ -5,15 +5,28 @@
     justify-content: space-between;
 }
 
-.navbar__logo{
+.navbarLogo{
     width: 100px;
 }
 
-.navbar__list{
+.navbarList{
     display: flex;
     list-style: none;
+    
+    li{
+        font-size:larger;
+        padding: 8px;
+        border: 1px solid #222;
+        border-radius: 3px;
+        background-color: #DDD;
+    }
+    li:hover{
+        cursor: pointer;
+        background-color: #BBB;
+    }
+    
 }
 
 .background{
-    background-color: #CCC;
+    background-color: #777;
 }
