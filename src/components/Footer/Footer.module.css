@@ -9,11 +9,14 @@
 .footer img{
     width: 20px;
     display: flex;
+    background-color: #555;
 }
 
 .footerSocial{
+    background-color: #555;
     display: flex;
     li{
+        background-color: #555;
         padding: 10px;
     }
     
