@@ -7,6 +7,7 @@ export const products = [
         "Bulbasaur is a small, quadruped Pokémon that has blue-green skin with darker patches. It has red eyes with white pupils, pointed, ear-like structures on top of its head, and a short, blunt snout with a wide mouth.",
       price: 100,
       stock: 10,
+      type: "grass",
       image: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png",
     },
     {
@@ -16,6 +17,7 @@ export const products = [
         "Charmander is a bipedal, reptilian Pokémon with a primarily orange body.",
       price: 400,
       stock: 40,
+      type:"fire",
       image: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png",
     },
     {
@@ -25,6 +27,7 @@ export const products = [
         "Squirtle is a small Pokémon that resembles a light blue turtle.",
       price: 700,
       stock: 70,
+      type:"water",
       image: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/007.png",
     },
     {
@@ -34,6 +37,7 @@ export const products = [
         "This intelligent Pokémon roasts hard berries with electricity to make them tender enough to eat.",
       price: 2500,
       stock: 250,
+      type:"electric",
       image: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png",
     },
   ]
@@ -43,12 +47,32 @@ export const products = [
      return new Promise((resolve, reject) => {
      setTimeout(() => {
        resolve(products)
-  
        //reject('No se pudo traer los productos')
-     }, 2000)
+     }, 1000)
      })
   }
   
+  export const getProductsByCategory = (categoryId) => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const filteredProducts = products.filter(
+          (elem) => elem.type === categoryId
+        )
+        resolve(filteredProducts)
+      }, 1000)
+    })
+  }
+
+  export const getProductById = (productId) => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const product = products.find((elem) => elem.id === parseInt(productId))
+        
+        resolve(product)
+      }, 1000)
+    })
+  }
+
   export const setProduct = () => {
     return fetch("https://fakestoreapi.com/products", {
       method: "POST",

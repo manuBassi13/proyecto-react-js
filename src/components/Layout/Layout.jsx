@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 import { Footer } from "../Footer/Footer"
-import { NavBar } from "../NavBar/Navbar"
+import { Navigation } from "../Navigation/Navigation"
 
 export const Layout = ({ children }) => {
 
     return(
         <div>
-            <NavBar/>
+            <Navigation/>
             <div>{children}</div>
             <Footer/>
         </div>

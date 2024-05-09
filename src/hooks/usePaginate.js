@@ -2,13 +2,12 @@ import { useState } from "react";
 
 export const usePaginate = (data, itemsPerPage) => {
     const [currentPage, setCurrentPage] = useState(1)
-
-    const totalPages = Math.ceil(data.lenght /itemsPerPage) //1.5 a 2
-
+    
+    const totalPages = Math.ceil(data.length / itemsPerPage) //1.5 a 2
     const paginate = (numPage) => setCurrentPage(numPage); //paginate permite cambiar de página
 
     const currentData = data.slice(
-        (currentPage -1) * itemsPerPage,    //posición inicio
+        (currentPage - 1) * itemsPerPage,    //posición inicio
         currentPage * itemsPerPage          //posicion final
     )
 
@@ -28,8 +27,7 @@ export const usePaginate = (data, itemsPerPage) => {
         }
     }
 
-    const totalPagesArray = Array.from({ lenght: totalPages }, (_, i) => i + 1)
-
+    const totalPagesArray = Array.from({ length: totalPages }, (_, i) => i + 1)
     return {
         currentPage,
         totalPages,
@@ -37,6 +35,6 @@ export const usePaginate = (data, itemsPerPage) => {
         prevPage,
         paginate,
         totalPagesArray,
-        currentData
+        currentData,
     }
 }

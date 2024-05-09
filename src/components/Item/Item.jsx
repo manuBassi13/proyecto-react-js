@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-
+import { Link } from "react-router-dom"
 
 export const Item = ({ id, name, description, price, image}) => {
 
@@ -12,10 +12,9 @@ export const Item = ({ id, name, description, price, image}) => {
         <div>
             <h3>{name}</h3>
             <img src={image}/>
-            <p>{description}</p>
-            <button onClick={handleOnClick}>
+            <Link to={`/products/${id}`} onClick={handleOnClick}>
                 Detalles
-            </button>
+            </Link>
         </div>
     )
 }
