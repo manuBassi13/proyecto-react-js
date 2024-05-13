@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getProductById } from "../../utils/MockData"
-import { Spinner } from "react-bootstrap"
+import  Spinner  from "react-bootstrap/Spinner"
 import { ItemDetail } from "../ItemDetail/ItemDetail"
 
 
@@ -23,11 +23,14 @@ export const ItemDetailContainer = () => {
         })
     }, [prodId])
     
-    return loading? (
-        <Spinner />
-    ): (
-        <div>
-            <ItemDetail {...product}/>
-        </div>
+    return (
+        <main>
+            { 
+                loading ? <Spinner animation="border" variant="primary"/>
+                : <ItemDetail {...product}/>
+            }
+            
+        </main>
     )
+    
 }

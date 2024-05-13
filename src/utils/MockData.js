@@ -40,6 +40,66 @@ export const products = [
       type:"electric",
       image: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png",
     },
+    {
+      id: 9,
+      name: "Squirtle",
+      description:
+        "Squirtle is a small Pokémon that resembles a light blue turtle.",
+      price: 700,
+      stock: 70,
+      type:"water",
+      image: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/007.png",
+    },
+    {
+      id: 2,
+      name: "Bulbasaur",
+      description:
+        "Bulbasaur is a small, quadruped Pokémon that has blue-green skin with darker patches. It has red eyes with white pupils, pointed, ear-like structures on top of its head, and a short, blunt snout with a wide mouth.",
+      price: 100,
+      stock: 10,
+      type: "grass",
+      image: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png",
+    },
+    {
+      id: 26,
+      name: "Pikachu",
+      description:
+        "This intelligent Pokémon roasts hard berries with electricity to make them tender enough to eat.",
+      price: 2500,
+      stock: 250,
+      type:"electric",
+      image: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png",
+    },
+    {
+      id: 5,
+      name: "Charmander",
+      description:
+        "Charmander is a bipedal, reptilian Pokémon with a primarily orange body.",
+      price: 400,
+      stock: 40,
+      type:"fire",
+      image: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png",
+    },
+    {
+      id: 8,
+      name: "Squirtle",
+      description:
+        "Squirtle is a small Pokémon that resembles a light blue turtle.",
+      price: 700,
+      stock: 70,
+      type:"water",
+      image: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/007.png",
+    },
+    {
+      id: 29,
+      name: "Pikachu",
+      description:
+        "This intelligent Pokémon roasts hard berries with electricity to make them tender enough to eat.",
+      price: 2500,
+      stock: 250,
+      type:"electric",
+      image: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png",
+    },
   ]
 
   export const getProducts = () => {

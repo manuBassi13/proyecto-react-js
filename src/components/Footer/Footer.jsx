@@ -7,15 +7,12 @@ export const Footer = () => {
 
     return( 
             <div className={styles.footer}>
-
-                
-                    <ul className={styles.footerSocial}>
-                        <li><a href="#"><img src={logo__fb} alt="Logo de Facebook" /></a></li>
-                        <li><a href="#"><img src={logo__insta} alt="Logo de Instagram" /></a></li>
-                        <li><a href="#"><img src={logo__tiktok} alt="Logo de TikTok" /></a></li>
-                    </ul>
-                
-                
+                <ul className={styles.footerSocial}> 
+                    <li><a href="#"><img src={logo__fb} alt="Logo de Facebook" /></a></li>
+                    <li><a href="#"><img src={logo__insta} alt="Logo de Instagram" /></a></li>
+                    <li><a href="#"><img src={logo__tiktok} alt="Logo de TikTok" /></a></li>
+                </ul>
             </div>
     );
+    
 }

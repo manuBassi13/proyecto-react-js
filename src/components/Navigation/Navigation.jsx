@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import styles from './Navigation.module.css'
 import logoBS from '../../assets/logo-bsheep.png'
 import { CartWidget } from "../CartWidget/CartWidget.jsx"
@@ -8,21 +9,22 @@ import { Link, NavLink } from 'react-router-dom'
 
 export const Navigation = () => {
     return (
-        <Navbar bg="dark" data-bs-theme="light">
+        <Navbar bg="primary" data-bs-theme="dark">
             <Container>
                 <Navbar.Brand href="#home">
                     <img src={logoBS} alt="Logo Black Sheep" className={styles.navbarLogo} />
                 </Navbar.Brand>
             
-                <Nav className="d-flex gap-3">
-                        <Link to="/">Inicio </Link>
-                        <Link to="/products">Products</Link>
+                <Nav className="me-auto">
+                        <Nav.Link to="/">Inicio </Nav.Link>
+                        <Nav.Link to="/products">Products</Nav.Link>
                         <Link to="/category/grass">Grass</Link>
                         <Link to="/category/fire">Fire</Link>
                         <Link to="/category/water">Water</Link>
                         <Link to="/category/electric">Electric</Link>
                         <Link to="/cart">Cart</Link>
                         <Link to="/about">About us</Link>
+                        <Link to="/dashboard">Dash</Link>
                 </Nav>
             </Container>
             <CartWidget/>

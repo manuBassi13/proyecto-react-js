@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import  Card  from "react-bootstrap/Card"
 import { Link } from "react-router-dom"
 
 export const Item = ({ id, name, description, price, image}) => {
@@ -9,12 +10,14 @@ export const Item = ({ id, name, description, price, image}) => {
     }
 
     return(
-        <div>
-            <h3>{name}</h3>
-            <img src={image}/>
-            <Link to={`/products/${id}`} onClick={handleOnClick}>
-                Detalles
-            </Link>
-        </div>
+        <Card style={{ width: '18rem' }}>
+            <Card.Img variant="top" src={image} />
+            <Card.Body>
+                <Card.Title>{name}</Card.Title>
+                <Link variant="primary" to={`/products/${id}`} onClick={handleOnClick}>
+                    Detalles
+                </Link>
+            </Card.Body>
+        </Card>
     )
 }

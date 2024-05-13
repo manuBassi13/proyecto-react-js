@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Item } from '../Item/Item'
+import styles from './ItemList.module.css'
 
 
 export const ItemList = ({ productsList }) => {
@@ -10,7 +11,7 @@ export const ItemList = ({ productsList }) => {
     //la key es pedida por react cuando hacemos un map y renderizamos una lista (para que pueda identificar cada elemento)
     //productList? (renderizado condicional)
     return(
-        <div>
+        <div className={styles.itemList}>
             {productsList?.map((elem) => {
                 return <Item key={elem.id} {...elem}/>
             })}

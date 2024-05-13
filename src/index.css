@@ -10,4 +10,10 @@
   min-height: 100vh;
 }
 
+main{
+  text-align: center;
+  min-height: 100%;
+  padding-bottom: 150px; /*Footer height*/
+}
+
 

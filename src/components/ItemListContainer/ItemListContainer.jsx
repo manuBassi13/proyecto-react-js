@@ -5,7 +5,8 @@ import { useState, useEffect } from 'react'
 import { getProducts, getProductsByCategory, setProduct } from '../../utils/MockData'
 import { ItemList } from '../ItemList/ItemList'
 import { useFetch } from '../../hooks/useFetch'
-import { Spinner } from '../spinner/Spinner'
+//import { Spinner } from '../spinner/Spinner'
+import Spinner from "react-bootstrap/Spinner"
 import { usePaginate } from '../../hooks/usePaginate'
 import { useParams } from 'react-router-dom'
 
@@ -17,7 +18,7 @@ export const ItemListContainer = ({greeting, bgGrey}) => {
     
     const {categoryId} = useParams()
 
-    const itemsPerPage = 1
+    const itemsPerPage = 3
 
     const {
         currentPage,
@@ -51,48 +52,48 @@ export const ItemListContainer = ({greeting, bgGrey}) => {
         } else {
             getProducts().then((res) => {
                 setProducts(res)
+                
                 setLoading(false)
             })
             .catch((error) => {
                 console.log(error)
             })
         }
-
+        
         //setProduct().then((res) => console.log(res))
     }, [categoryId])
 
     const defaultTitle = "Bienvenidos a mi tienda"
     
     return(
-        <main >
+        <main>
             <h1> { greeting ? greeting : defaultTitle } </h1>
-            {loading?<Spinner/>:
-            <div>
-                <ItemList productsList={products} />
+            <div className='d-flex justify-content-center'>
+                {loading? <Spinner />:
+                <div>
+                    <ItemList productsList={currentData} />
 
-                <button onClick={prevPage}> Prev Page </button>
-                {totalPagesArray.map((page) => {
-                    if (page < 3){
-                        return(
-                            <button key={page} onClick={() => paginate(page)}>
-                                {page}
-                            </button>
-                        )
-                    } if (page === 3) return "..."
-                    if (page === totalPages){
-                        return(
-                            <button key={page} onClick={() => paginate(page)}>
-                                {page}
-                            </button>
-                        )
-                    }
-                })}
-                <button onClick={nextPage}>Next Page</button>
-            </div>  
-            }
-            
-            <p className={bgGrey ? styles.bgOk : styles.bgDefault}>Suspendisse ut malesuada sapien, vitae mollis diam. Suspendisse tristique et ex non faucibus. Pellentesque a urna risus. Ut non enim finibus, tempus dui eget, tincidunt sem. Phasellus sed mauris elit. Pellentesque condimentum lorem vitae justo congue, ut semper nisi gravida. Sed viverra nibh eget tincidunt convallis. In egestas non tortor at tempor. Nullam maximus mi ac pharetra dictum.</p>
-            
+                    <button onClick={prevPage}> Prev Page </button>
+                    {totalPagesArray.map((page) => {
+                        if (page < 3){
+                            return(
+                                <button key={page} onClick={() => paginate(page)}>
+                                    {page}
+                                </button>
+                            )
+                        } if (page === 3) return "..."
+                        if (page === totalPages){
+                            return(
+                                <button key={page} onClick={() => paginate(page)}>
+                                    {page}
+                                </button>
+                            )
+                        }
+                    })}
+                    <button onClick={nextPage}>Next Page</button>
+                </div>  
+                }
+            </div>
         </main>
         
     )
