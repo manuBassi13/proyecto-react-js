@@ -1,28 +1,26 @@
-.header{
+/*.header{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
-
 .navbarLogo{
     width: 100px;
 }
+*/
 
-.navbarList{
-    display: flex;
-    list-style: none;
-    
-    li{
-        font-size:larger;
+.navLinks{
+    a{
+        color:#000;
+        text-decoration: none;
         padding: 8px;
-        border: 1px solid #222;
-        border-radius: 3px;
+        margin: 3px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        
     }
-    li:hover{
+    a:hover{
         cursor: pointer;
+        background-color: #DDD;
     }
-    
 }
-
-
