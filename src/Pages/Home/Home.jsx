@@ -8,7 +8,7 @@ export const Home = () => {
 
     return(
         <div>
-            Home Page
+            <h1>Bienvenidos a Black Sheep</h1>
         </div>
     )
 }
