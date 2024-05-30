@@ -1,10 +1,13 @@
 import { useCartContext } from "../../context/CartContext"
+import { useState } from "react"
 import Table from "react-bootstrap/Table"
+import { db } from "../../firebase/dbConnection"
+import { addDoc, collection } from "firebase/firestore"
 
 export const Cart = () =>{
 
     const { cart, totalPrice, removeItem, clearCart } = useCartContext()
-
+    const [formData, setFormData] = useState({name:"", tel:"", email:""})
     const handleRemoveItem = (id, price, qty) => {
       removeItem(id, price, qty)
     }
@@ -12,6 +15,35 @@ export const Cart = () =>{
     const handleClearCart = () => {
       clearCart()
     }
+
+    const handleSaveCart = () => {
+      console.log("Saving in db")
+      console.log("formData", formData)
+      console.log("cart", cart);
+
+      const ordersCollection = collection(db, "orders")
+      const newOrder = {
+        buyer: formData,
+        items: cart,
+        date: new Date(),
+        total: totalPrice,
+      }
+
+      addDoc(ordersCollection, newOrder)
+      .then((doc) => {
+        alert("Compra realizada con éxito, su número de orden es: " + doc.id)
+       console.log(doc) 
+       clearCart()
+       setFormData({name:"", tel:"", email:""})
+      })
+      .catch((err) => console.log(err))
+    }
+
+
+    const handleOnChange = (e) => {
+      setFormData({ ...formData, [e.target.name]: e.target.value })
+    }
+
     return (
         <>
           <Table striped bordered hover>
@@ -53,20 +85,23 @@ export const Cart = () =>{
             name="name"
             id="name"
             placeholder="Ingrese nombre"
+            onChange={(e) => handleOnChange(e)}
           />
           <input
             type="number"
             name="tel"
             id="tel"
             placeholder="Ingrese telefono"
+            onChange={(e) => handleOnChange(e)}
           />
           <input
             type="email"
             name="email"
             id="email"
             placeholder="Ingrese email"
+            onChange={(e) => handleOnChange(e)}
           />
-          <button>Finalizar Compra</button>
+          <button onClick={handleSaveCart}>Finalizar Compra</button>
 
         </>
       )

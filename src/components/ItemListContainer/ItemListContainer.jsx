@@ -9,6 +9,8 @@ import { useFetch } from '../../hooks/useFetch'
 import Spinner from "react-bootstrap/Spinner"
 import { usePaginate } from '../../hooks/usePaginate'
 import { useParams } from 'react-router-dom'
+import { db } from "../../firebase/dbConnection"
+import { collection, getDocs, query, where } from 'firebase/firestore'
 
 //Desestructurar en la creacion del componente
 export const ItemListContainer = ({greeting, bgGrey}) => {
@@ -35,29 +37,47 @@ export const ItemListContainer = ({greeting, bgGrey}) => {
     //const method = "GET"
     //const {data, loading, error} = useFetch(url, method, null)
 
-
-    //Desestructurar asignando los valores de props (Parametro) a variables
-    //const {bgBlue, greeting} = props
-    //const bgBlue = props.bgBlue
-    //const greeting = props.greeting
-
-
     useEffect(() => {
         setLoading(true)
+
+        const productsCollection = collection(db, "products")
+
         if(categoryId) {
-            getProductsByCategory(categoryId).then((res) => {
-                setProducts(res)
+
+            const cons = query(
+                productsCollection,
+                where("type", "==", categoryId)
+            )
+
+            getDocs(cons)
+            .then(({docs}) => {
+                const prodFromDocs = docs.map((doc) => ({
+                    id: doc.id, 
+                    ...doc.data(),
+                }))
+                setProducts(prodFromDocs)
                 setLoading(false)
-            })
-        } else {
-            getProducts().then((res) => {
-                setProducts(res)
-                
-                setLoading(false)
-            })
-            .catch((error) => {
+            }).catch((error) => {
                 console.log(error)
             })
+            // getProductsByCategory(categoryId).then((res) => {
+            //     setProducts(res)
+            //     setLoading(false)
+            // })
+        } else {
+            getDocs(productsCollection)
+                .then(({docs}) => {
+                    const prodFromDocs = docs.map((doc) => ({
+                        id: doc.id, 
+                        ...doc.data(),
+                    }))
+                    
+                    setProducts(prodFromDocs)
+                    setLoading(false)
+            }).catch((error) => {
+                console.log(error)
+            })
+    
         }
         
         //setProduct().then((res) => console.log(res))
