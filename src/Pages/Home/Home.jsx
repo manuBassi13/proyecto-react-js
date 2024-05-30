@@ -1,14 +1,11 @@
+import { importProductsFromMock } from "../../utils/importProducts"
+
 
 export const Home = () => {
-
-    //const itemListContainerProps = {
-    //   greeting: "Welcome to Black Sheep",
-    //   bgGrey: true
-    //  }
-
     return(
         <div>
             <h1>Bienvenidos a Black Sheep</h1>
+            <button onClick={importProductsFromMock}>Agregar productos desde Mock</button>
         </div>
     )
 }

@@ -9,6 +9,7 @@ import { Dashboard } from './components/Dashboard/Dashboard'
 import { useEffect } from 'react'
 import { PrivateRoute } from './components/PrivateRoute/PrivateRoute'
 import { AccessError } from './components/Error/AccessError.jsx'
+import CartContextProvider from './context/CartContext.jsx'
 //import styles from './App.module.css'
 
 
@@ -22,25 +23,25 @@ const App = () => {
 
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<Layout/>}>
-          <Route path='/' element={<Home/>} />
-          <Route path='/products' element={<ItemListContainer/>}/>
-          <Route path='/category/:categoryId' element={<ItemListContainer/>}/>
-          <Route path='/products/:prodId' element={<ItemDetailContainer/>} />
-          <Route path='/cart' element={<Cart/>} />
-          <Route path='/accessError' element={<AccessError/>}/>
-          <Route path='*' element={<Error/>}/>
-          <Route element={<PrivateRoute/>}>
-            <Route path='dashboard' element={<Dashboard/>}/>
+    <CartContextProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<Layout/>}>
+            <Route path='/' element={<Home/>} />
+            <Route path='/products' element={<ItemListContainer/>}/>
+            <Route path='/category/:categoryId' element={<ItemListContainer/>}/>
+            <Route path='/products/:prodId' element={<ItemDetailContainer/>} />
+            <Route path='/cart' element={<Cart/>} />
+            <Route path='/accessError' element={<AccessError/>}/>
+            <Route path='*' element={<Error/>}/>
+            <Route element={<PrivateRoute/>}>
+              <Route path='dashboard' element={<Dashboard/>}/>
+            </Route>
+            
           </Route>
-          
-        </Route>
-      </Routes>
-      
-    </BrowserRouter>
-
+        </Routes>
+      </BrowserRouter>
+    </CartContextProvider>
   ) 
 }
 

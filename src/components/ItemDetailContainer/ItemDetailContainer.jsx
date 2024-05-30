@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { getProductById } from "../../utils/MockData"
 import  Spinner  from "react-bootstrap/Spinner"
 import { ItemDetail } from "../ItemDetail/ItemDetail"
+import { collection, getDoc, doc } from "firebase/firestore"
+import { db } from "../../firebase/dbConnection"
 
 
 export const ItemDetailContainer = () => {
@@ -12,15 +13,21 @@ export const ItemDetailContainer = () => {
 
     useEffect(() => {
         setLoading(true)
-        getProductById(prodId)
-        .then((res) => {
-            setProduct(res)
+        const productsCollection = collection(db, "products")
+        const refDoc = doc(productsCollection, prodId)
+
+        getDoc(refDoc).then((res) => {
+            setProduct({id:res.id, ...res.data()})
             setLoading(false)
-        })
-        .catch((err) =>{
+        }).catch((err) =>{
             console.log(err)
             setLoading(false)
         })
+        // getProductById(prodId)
+        // .then((res) => {
+        //     setProduct(res)
+        //     setLoading(false)
+        // })
     }, [prodId])
     
     return (
